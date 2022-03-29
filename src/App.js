@@ -1,70 +1,32 @@
-// import writers from "./writers"
-import './App.css';
-import ProfileCard from "./ProfileCard";
 import { useEffect, useState } from "react";
-import ProfileForm from './components/ProfileForm';
-
+import Axios from "axios";
 
 function App() {
+  const [posts, setPosts] = useState([]);
 
-  const[allProfile, setAllProfile] = useState([
-    {
-      firstName: "Hananah",
-      lastName: "Montana",
-      email: "hannah.montana@email.com",
-      phone:"+233 024 455 000"
-    },
-  ])
+  useEffect(() => {
+    (async () => {
+      let response = await Axios({
+        method: "GET",
+        url: "https://jsonplaceholder.typicode.com/posts",
+      });
 
-  const Submit = (profile) => {
-    const arr = allProfile;
-    arr.push(profile);
-    setAllProfile(arr);
-  }
-//   const [data, setData] = useState({
-//     writers: [],
-//     loading: false,
-//   });
+      setPosts(response.data);
+    })();
+  });
 
-//   const handleClick = () => {
-//     setData((prevData) => ({
-//       ...prevData,
-//       loading: true
-//     }))
-    
-//     setTimeout(() => {
-//       const getWriters = async () => {
-//         const response = await fetch('/writers.json');
-//         const data = await response.json();
-//         setData(data);
-//       };
-  
-//       getWriters()
-    
-//     }, 2000);
-//   };
-
-// if(data.loading) {
-//   return (
-//     <div>
-//       <h1> Writer Profiles</h1>
-//       <div className='container'>
-//         <div className="card action">
-//           <p className="infoText"> ...Loading</p>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
-return (
-    <div >
-      <h1>Writer Profiles</h1>
-      <div className="container">
-          <ProfileForm Submit={Submit}/>
-          {allProfile.map((writer) => (
-            <ProfileCard key={writer.id} writer={writer} />        
-        ))}
+  return (
+    <div className="app">
+      <h1> Daily Posts </h1>
+      <div>
+        <div className="list">
+          {posts.map((post) => (
+            <div key={post.id} className="post">
+              <h3>{post.title}</h3>
+              <p>{post.body}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

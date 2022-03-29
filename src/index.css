@@ -183,3 +183,14 @@ hr {
   padding: 15px;
   background-color: darkcyan;
 }
+
+.post {
+  margin: 10px auto;
+  max-width: 500px;
+  padding: 10px;
+  background-color: coral;
+}
+
+.post > h3 {
+  text-align: center;
+}

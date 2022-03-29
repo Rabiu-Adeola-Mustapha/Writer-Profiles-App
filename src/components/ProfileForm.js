@@ -9,7 +9,7 @@ const ProfileForm = ({Submit}) => {
     });
 
     const handleChange =(e) => {
-        const {name, value} = e.target;
+        const {name, value} = e.targert;
         setProfile({...profile, [name]:value});
     };
 
