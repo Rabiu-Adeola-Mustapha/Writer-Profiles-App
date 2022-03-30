@@ -1,30 +1,25 @@
-import { useEffect, useState } from "react";
-import Axios from "axios";
+import useLocalStorage from "./hooks/useLocalStorage";
+import ProfileForm from "./components/ProfileForm";
+import ProfileCard from "./components/ProfileCard";
 
 function App() {
-  const [posts, setPosts] = useState([]);
+  const [profiles, setProfiles] = useLocalStorage("profiles", []);
 
-  useEffect(() => {
-    (async () => {
-      let response = await Axios({
-        method: "GET",
-        url: "https://jsonplaceholder.typicode.com/posts",
-      });
-
-      setPosts(response.data);
-    })();
-  });
+  const updateProfiles = (profile) => {
+    let arr = profiles;
+    arr.push(profile);
+    setProfiles([...arr]);
+  };
 
   return (
     <div className="app">
-      <h1> Daily Posts </h1>
+      <h1> Profile Maker </h1>
       <div>
+        <ProfileForm submit={updateProfiles} />
+        <hr />
         <div className="list">
-          {posts.map((post) => (
-            <div key={post.id} className="post">
-              <h3>{post.title}</h3>
-              <p>{post.body}</p>
-            </div>
+          {profiles.map((person, index) => (
+            <ProfileCard key={index} writer={person} />
           ))}
         </div>
       </div>
