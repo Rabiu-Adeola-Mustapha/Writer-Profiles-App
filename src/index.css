@@ -194,3 +194,12 @@ hr {
 .post > h3 {
   text-align: center;
 }
+section {
+  width: 90%;
+  margin: 0 auto;
+}
+section p {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
