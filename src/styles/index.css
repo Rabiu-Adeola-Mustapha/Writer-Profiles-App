@@ -1,0 +1,64 @@
+@import url(reset.css);
+@import url(home.css);
+
+.layout {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.main-component {
+  flex: 1;
+  min-width: 95%;
+  margin: auto;
+}
+
+footer {
+  background-color: crimson;
+  padding: 10px;
+  text-align: center;
+  color: whitesmoke;
+}
+
+button {
+  outline: 0;
+  margin: 10px;
+  font-size: 16px;
+  padding: 10px 30px;
+  border-radius: 3px;
+  border: 2px solid crimson;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.appbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: crimson;
+}
+
+.appbar > span {
+  font-size: 25px;
+  font-weight: 700;
+  color: whitesmoke;
+}
+
+.nav-link > a {
+  display: inline-block;
+  margin: 0 10px;
+  padding: 5px 10px;
+  text-decoration: none;
+  color: white;
+}
+
+.nav-link > a:hover {
+  border-bottom: 2px solid white;
+  border-bottom-width: 0%;
+}
+
+.active > a {
+  border-bottom: 2px solid white;
+}
